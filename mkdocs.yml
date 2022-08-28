@@ -1,0 +1,60 @@
+site_name: Luxz Website
+
+nav:
+    - Introduction: index.md
+    - Notes: 
+      - Data 100 Revision: Data100/Data100_review.md
+      - CS 170 Notes: 
+        - Lecture 1: CS170/Lec1.md
+      - EE 140 Notes: 
+        - Lecture 1: EE140/Lec1.md
+      - EE 120 Notes:
+        - Lecture 1: EE120/Lec1.md
+    - Projects:
+      - 151 Verilog CPU: Projects/151_CPU.md
+
+theme:
+  name: material
+  # logo: assets/favicon.png
+  # favicon: assets/favicon.png
+
+  palette: 
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: pink
+    # - primary: deep purple
+    
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - scheme: default
+      primary: deep purple
+      accent: pink
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+  features:
+    - header.autohide
+    - navigation.instant
+    - navigation.tabs
+    - toc.integrate
+    - navigation.top
+    - content.code.annotate
+    - search
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - mdx_math
+
+extra_javascript: 
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+markdown_extensions:
+    
