@@ -1,6 +1,6 @@
 ## Music as Collective Action
 
-## Beat Terms
+### Beat Terms
 
 * **Beat**: a basic musician unit subdividing time. A regular, recurring pulse or background. The quicker beats succeed each other, the faster **tempo**.
 * **Meter**: The effect of grouping accented and unaccented beats into a recurring pattern.
@@ -8,7 +8,7 @@
 * **accent** (accented or unaccented): The stressing or emphasis of a beat, by making it louder and causing our sense of meter
 * **Metrical** - there is a beat presense; Nonmetrical - no beat
 
-## Meters
+### Meters
 
 * **Duple** meter
   * Two in a measure (bar): ONE (down) two (up) ONE two
@@ -24,4 +24,7 @@ Meter vs Rhythm: rhythm is the flow of sound; meter is the patterns in the sound
 
 ## Music as Way of Life
 
-## 
+### Pitch
+Staying put: on one level
+
+Whole step, Half step, and chromatic scale
