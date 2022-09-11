@@ -13,5 +13,9 @@ Texture: Describing the "weave" or blend of sounds and melodic lines occurring s
 
 **Homophonic**: describing a texture with only one melody of real interest, sustaining a hierarchy that everything else supports, either 1).melody and accompaniment or 2). thythmic unison
 
+### Dynamics
+Softest ---> Loudest
+strings/woodwinds/brass/percussion
 
+powerful vs noisy?
 
