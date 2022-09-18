@@ -10,6 +10,10 @@ nav:
         - Lecture 1: EE140/Lec1.md
       - EE 120 Notes:
         - Lecture 1: EE120/Lec1.md
+      - Music 27 Notes:
+        - Week2: Musci27/Week2.md
+        - Week3: Musci27/Week3.md
+        - Week4: Musci27/Week4.md
     - Projects:
       - 151 Verilog CPU: Projects/151_CPU.md
 

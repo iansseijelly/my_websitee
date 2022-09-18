@@ -22,9 +22,24 @@ Meter vs Rhythm: rhythm is the flow of sound; meter is the patterns in the sound
 
 **Syncopation**: The displacement of accents in foreground rhythm against background meter
 
-## Music as Way of Life
+### Music as Way of Life
 
 ### Pitch
 Staying put: on one level
 
 Whole step, Half step, and chromatic scale
+
+### W2 Potpouri
+**isicathamiya**: South African choral song. 
+	- *Apartheid*
+	- *call and response*: one calls of a phrase, and the rest of the people will respond.
+
+**a cappella**: purely vocal, nothing instrumental
+
+**The Middle Ages**: the age of Colombus, 1492, 
+
+**plainchant** or **Georgia chant**: one of the medieval modes, consistes of unaccompanied, **monophonic** sounds.
+
+**organum**: The very first NOTATED polyphonic music -> an a capella genre
+
+**Melodic contours**: Is it by step or by leap? Is it ascending or descending? The flow of how the music moves.

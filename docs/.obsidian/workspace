@@ -1,0 +1,153 @@
+{
+  "main": {
+    "id": "e8086e6540772648",
+    "type": "split",
+    "children": [
+      {
+        "id": "29a06316b09a1542",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Musci27/Week2.md",
+            "mode": "source",
+            "source": true
+          }
+        }
+      },
+      {
+        "id": "ec85ce92e3b790eb",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Musci27/Week2.md",
+            "mode": "preview",
+            "source": true
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "706c90b919710756",
+    "type": "split",
+    "children": [
+      {
+        "id": "69f50d5e4435d317",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cc10405972ec7f5f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "cc01dce0e079626b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "21de929ae93ce0b3",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c98bb6dc55716f62",
+    "type": "split",
+    "children": [
+      {
+        "id": "39efac8bf77d31bf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "30668b169e408892",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Musci27/Week2.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c2b82ee8b8632fa1",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Musci27/Week2.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c73a4896e85b8aee",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "8521c88585e66b6d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Musci27/Week2.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "ec85ce92e3b790eb",
+  "lastOpenFiles": [
+    "Musci27/Week4.md",
+    "Musci27/Week2.md",
+    "Musci27/Week3.md",
+    "Untitled.md",
+    "EE120/Lec1.md",
+    "Projects/151_CPU.md",
+    "Data100/Data100_review.md"
+  ]
+}
