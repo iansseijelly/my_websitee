@@ -75,6 +75,6 @@ $$Y(z) = \sum_{j=0}^{m-1}y_jz^j$$
 
 then, we can reverse X(z) to get them increment at the same tendency, arriving at:
 
-$$X(z) * Y(z) = (x_{m-1}y_0)z^0 + (x_{m-1}y_1 + x_{m-2}y_0)z^1 + ... + (x_0y_0+x_1y_1+ ... + x_{m-1}y_{m-1})z^m-1 + (x_0y_1+x_1y_2+ ... )z^m + ...$$
+$$X(z) * Y(z) = (x_{m-1}y_0)z^0 + (x_{m-1}y_1 + x_{m-2}y_0)z^1 + ... + (x_0y_0+x_1y_1+ ... + x_{m-1}y_{m-1})z^{m-1} + (x_0y_1+x_1y_2+ ... )z^m + ...$$
 
 Reading off the coefficients will give the desired results.

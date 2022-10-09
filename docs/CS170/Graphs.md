@@ -69,9 +69,9 @@ Classification of edges e = (u,v):
 4. Cross edge: All other edges
 
 for U -> V
-if pre(U) < pre(V) < post(V) < post(U) => must be a tree edge or a forward edge
-if pre(V) < pre(U) < post(U) < post (V) => must be a back edge
-if pre(V) < post(V) < pre(U) < post(U) => must be a cross edge
+* if pre(U) < pre(V) < post(V) < post(U) => must be a tree edge or a forward edge
+* if pre(V) < pre(U) < post(U) < post (V) => must be a back edge
+* if pre(V) < post(V) < pre(U) < post(U) => must be a cross edge
 
 **Claim**: A Graph is a DAG if and only if DFS finds no back edges
 if back edge is found, then there exists a cycle
