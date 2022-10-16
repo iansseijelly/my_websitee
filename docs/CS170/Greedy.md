@@ -1,5 +1,73 @@
 # Greedy Algorithm
 
+## Task Scheduling
+what order should you do your hw assignments in each with the deadline, to maximize the number of homeworks within their ddl?
+
+* assignments: a1, a2, ... , an
+* deadlines: d1, d2, ... , dn
+\* each task takes 1hr to complete
+
+### Algorithm
+
+    repeat
+        pick an unexpired ai with the nearest deadline
+    until nothing to be done
+
+**Correctness Proof**: 
+Proof by contradiction: if A_sk != A_gk is the first task the greedy solution differs from the true optimal, changing A_sk to A_gk is still optimal, otherwise the greedy algorithm would have ended before the optimal one.
+
+**case1:** if a_gk does not appear in S, then we can just change a_sk to a_gk
+**case2:** if a_gk appears in S later, as a_sl = a_gk for some l > k, it is ok to swap a_sl to an earlier since it has not expired, as d_gk = d_sl <= d_sk, so we can do a_sk later and it is not expired yet.
+
+## Huffman Coding
+using the fewest number of bits to store a dataset losslessly
+
+given a random string of chars of length n from alphabet {A,B,C,D}, how many bits needed to encode the string?
+
+### Naively
+2 bits/char => n chars takes 2n bits
+
+### Better solution
+Suppose we know the frequency for each characters appear. Example:
+
+* A   B   C   D
+* .4  .3  .2  .1
+
+Use fewer bits for the more frequent characters.
+
+* A   B   C    D
+* 0   10  110  111
+
+**Fact:** there's a 1-1 correspondence between prefix free codes and full binary tree -> each node has 0 or 2 children.
+
+if f1 and f2 are the two least frequently visited chars, they should be at the very bottom of the tree.
+
+Define that for any non-root node v in tree, $$cost(v) = \sum_i fi$$
+$$cost(T) = \sum_i cost(v)$$
+
+**Claim:** this prefix free algorithm results in an optimal tree with lowest cost
+
+**Proof by Induction**: 
+base case: 1 or 2 chars: just use 1 bit
+induction: let T' be a tree for some f1+f2, f3, f4 ... optimal by induction
+T = T' with f1, f2 as a tree added into the f1+f2 as a substitue.
+
+cost (T) = cost (T') + f1 + f2
+
+if T is not optimal, then T' is neither optimal, because we can just replace 
+
+### Algorithm
+
+    create a priority queue H of {1,2,...,n} sorted by frequency
+    for k = n + 1 to 2n-1:
+        i = deletemin(H), j = deletemin(H)
+        create a new vertex k with i and j as children
+        fk = fi + fj
+        insert back into queue H(k, fk)
+
+## SetCover
+given a set v and m subsets that cover v, find fewest sets that still cover v. 
+
 ## Minimum Spanning Tree
 Given an undirected graph G, find the subset T of edges with the smallest total weight that connects all vertices. 
 
