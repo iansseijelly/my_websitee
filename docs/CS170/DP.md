@@ -26,3 +26,5 @@ $$ = O(n(m+n))$$
         for k in range(1, n):
             for b in range(1, n+1):
                 T[b][1] <- T[b][0]
+                    for (v,b) in E:
+                        T[b][1] = min(T[b][1], T[v][0] + w(e))
