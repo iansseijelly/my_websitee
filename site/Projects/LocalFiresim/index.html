@@ -13,7 +13,7 @@
     
     
       
-        <title>Drydock Local-FPGA Co-Simulation Setup Doc - Luxz Website</title>
+        <title>Drydock LocalFPGA doc - Luxz Website</title>
       
     
     
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Drydock Local-FPGA Co-Simulation Setup Doc
+              Drydock LocalFPGA doc
             
           </span>
         </div>
@@ -207,13 +207,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../151_CPU/" class="md-tabs__link">
+      <a href="../151_CPU/" class="md-tabs__link md-tabs__link--active">
         Projects
       </a>
     </li>
@@ -539,12 +541,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -570,6 +574,75 @@
       <a href="../151_CPU/" class="md-nav__link">
         151 Verilog CPU
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Drydock LocalFPGA doc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Drydock LocalFPGA doc
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    Before you start
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-firesim" class="md-nav__link">
+    Setting Up Firesim
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-building-a-simulation" class="md-nav__link">
+    Test Building a Simulation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -607,7 +680,7 @@
 mkdir [username]
 cd [username]
 </code></pre></div>
-<p>make sure you have installed Vitis/Vivado and XRT. They should be installed already on the millennium machine. However, you need to source them properly to access these software. Copy this example bashrc (written by Abe originally) to source everything you need. <strong>Make sure you substitue all [username] with your actual username!</strong></p>
+<p>Make sure you have installed Vitis/Vivado and XRT. They should be installed already on the millennium machine. However, you need to source them properly to access these software. Copy this example bashrc (written by Abe originally) to source everything you need. <strong>Make sure you substitue the [username] with your actual username!</strong></p>
 <div class="highlight"><pre><span></span><code># example .bashrc
 
 # Quick way to get home
@@ -672,8 +745,8 @@ firesim managerinit --platform vitis
 <p>Great! At this point, your firesim repo is already setup, and you're ready to go!</p>
 <h2 id="test-building-a-simulation">Test Building a Simulation</h2>
 <p>Let's test if firesim works as expected, by building a very small rocket core and verify it simulates correctly. Now, before you start, notice that we need to source a bunch of scripts. For our purpose, it should be:</p>
-<div class="highlight"><pre><span></span><code>    source env.sh
-    source sourceme-f1-manager.sh
+<div class="highlight"><pre><span></span><code>source env.sh
+source sourceme-f1-manager.sh
 </code></pre></div>
 <p>You may want to add this into your <code>~/.bashrc</code> to avoid doing it everytime. </p>
 <p>Now let's <strong>add</strong> the following build recipe to your <code>deploy/config_build_recipes.yaml</code> file. This is where you will specify the bitstream you want to generate from. </p>
@@ -732,6 +805,27 @@ firesim buildbitstream
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../151_CPU/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 151 Verilog CPU" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              151 Verilog CPU
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
