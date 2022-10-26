@@ -16,6 +16,7 @@ nav:
         - Week4: Musci27/Week4.md
     - Projects:
       - 151 Verilog CPU: Projects/151_CPU.md
+      - Drydock LocalFPGA doc: Projects/LocalFiresim.md
 
 theme:
   name: material

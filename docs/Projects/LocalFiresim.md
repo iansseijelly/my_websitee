@@ -17,7 +17,7 @@ First thing first, make a new directory in scratch.
     mkdir [username]
     cd [username]
 
-make sure you have installed Vitis/Vivado and XRT. They should be installed already on the millennium machine. However, you need to source them properly to access these software. Copy this example bashrc (written by Abe originally) to source everything you need. **Make sure you substitue all [username] with your actual username!**
+Make sure you have installed Vitis/Vivado and XRT. They should be installed already on the millennium machine. However, you need to source them properly to access these software. Copy this example bashrc (written by Abe originally) to source everything you need. **Make sure you substitue the [username] with your actual username!**
 
     # example .bashrc
 
@@ -91,8 +91,8 @@ Great! At this point, your firesim repo is already setup, and you're ready to go
 
 Let's test if firesim works as expected, by building a very small rocket core and verify it simulates correctly. Now, before you start, notice that we need to source a bunch of scripts. For our purpose, it should be:
 
-        source env.sh
-        source sourceme-f1-manager.sh
+    source env.sh
+    source sourceme-f1-manager.sh
 
 You may want to add this into your `~/.bashrc` to avoid doing it everytime. 
 
