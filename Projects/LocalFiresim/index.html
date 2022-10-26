@@ -13,7 +13,7 @@
     
     
       
-        <title>151 Verilog CPU - Luxz Website</title>
+        <title>Drydock Local-FPGA Co-Simulation Setup Doc - Luxz Website</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#project-review-eecs151_asic_cpu" class="md-skip">
+        <a href="#drydock-local-fpga-co-simulation-setup-doc" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              151 Verilog CPU
+              Drydock Local-FPGA Co-Simulation Setup Doc
             
           </span>
         </div>
@@ -207,15 +207,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../151_CPU/" class="md-tabs__link">
         Projects
       </a>
     </li>
@@ -541,14 +539,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
@@ -569,94 +565,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          151 Verilog CPU
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../151_CPU/" class="md-nav__link">
         151 Verilog CPU
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#skeleton-code" class="md-nav__link">
-    Skeleton Code
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#design-decisions" class="md-nav__link">
-    Design Decisions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#alu" class="md-nav__link">
-    ALU
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#datapath-and-control" class="md-nav__link">
-    Datapath and Control
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cache" class="md-nav__link">
-    Cache
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#debugging-cache" class="md-nav__link">
-    Debugging Cache
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#todos" class="md-nav__link">
-    TODOs
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -682,35 +595,125 @@
                 
 
 
-<h1 id="project-review-eecs151_asic_cpu">Project Review: EECS151_ASIC_CPU</h1>
-<p>This is a review of the Verilog CPU me and Yichuan Ding co-designed and developed in EECS151 ASIC lab.</p>
-<h2 id="skeleton-code">Skeleton Code</h2>
-<p>Almost all module file is provided with a port skeleton, except for memloader.v, Cache.v, and RISC-V control.v. The top module, and a pretty extensive test are also predefined and can be used for our convenience.</p>
-<p>As a result, it is unfair to say we "developed a CPU from scratch". We have a crazily solid foundation abefore we start actually implementing anything. </p>
-<h2 id="design-decisions">Design Decisions</h2>
-<p>We were tasked to design a three-stage pipelined CPU. Many other folks in our lab decided to directly persue a five-stage CPU in order to win that non-existing apple competition : /. Still, we decided to go for a simpler three-stage pipline because it will be a lot easier to debug and have way less hazards to consider.</p>
-<p><img alt="pipelinediagram" src="../img/pipelinediagram.png" /></p>
-<p>The diagram above is the pipeline diagram we ended up using for the final design. In the initial design, we have IF, D+E, and M+WB. However, we later found out the need to put the DMEM on the brink of two pipeline stages because it is a clocked component and doesn't support asynchronous read. So we ended up having to put IMEM and DMEM on the edge between two stages to save cycles and improve performance.</p>
-<p>A very cool part to brag about this design is the special PC register logic in the Instruction Fetching stage. We have designed it so that the mux chooses PC or the branch/jump target to feed into the IMEM and PC_D register, but the PC_reg updates its value based on either PC+4 or target+4. This way, we can (brilliantly) avoid any control hazards from branching or jump and thus avoid writing any logic for branch prediction. This design has the additional benefit of not needing to reset the PC_reg to target-4, so we kept the entire system intuitive and readable.</p>
-<h2 id="alu">ALU</h2>
-<p>The first task is to design an ALU for this CPU. This is supposed to be a fairly easy task. It is mainly constituted of case and if statements. One thing we didn't debug was the SRA. Verilog only treats a shift right to be arithmetic if the number to be shifted is explicitly signed. Otherwise it will still be a logical shift, even if you used &gt;&gt;&gt; instead of &gt;&gt; for the shift. The key difference is that SRA will put in signed bits to the left, whereas SRL will only put a bunch of zeroes. </p>
-<h2 id="datapath-and-control">Datapath and Control</h2>
-<p>Writing the datapath and the control logic is utterly simple. All the components are explicitly drawn, and connections are out there as well. It is more of a labor than an intellectual work to just to code down the stream. </p>
-<p>However, because we firstly had no idea what is a CSR(Control Status Register) and decided to ignore it for now, we ran into the middle of nowhere for quite a while. Turns out the test programs utilizes the CSR to check for errors. </p>
-<p>After finishing up the CSR, it is just a matter of labor work again to fix up the rest of the code. Of course we make terrible coding mistakes along the way, so we must do test-oriented programming, finding and fixing them manually. We fixed them in the order of arithmetic operations =&gt; load word =&gt; the rest of load instructions =&gt; store instructions. This part of debugging only took about a weekend, so it is quite a breeze comparing to what's coming next.</p>
-<h2 id="cache">Cache</h2>
-<p><img alt="cachediagram" src="../img/cachedia.png" /></p>
-<p>Cache is where we suffered the most for sure. We were asked to design and implement a direct-mapped cache that is 2kB, with each cache line 512 bits. The maximum size of a DRAM available to us, though, its only 128 bits wide (64*128), so each of the read and write operations take 4 repetitive steps to complete. </p>
-<p>This requires us to create a counter within the cache to keep track of what is being loaded already and how many more are required. In other words, the interface between the cache and the main memory is itself another small FSM! This is an exciting observation, and we decided to create a separate module to bring this obseration to life. This leads us to the mem-loader module, the bridge between cache and main memory.</p>
-<p>This design turns out to be fruitful in a lot of ways. Firstly, it carries out both the read and write at the same time, leaving the cache to be a black box to only needing to send requests by RW=1 or 0. Secondly, it makes the system very flexible and compatible to changes in adding additional layers of cache, or possibly swapping the lowest level of cache, while not confusing the main memory with changed requests. Lastly, this design is way easier to debug because it shows a clearer flow of signal and requests from the cache to the main memory.</p>
-<p>When cache is firstly implemented, our previous passed tests turn out to crumble down, even those R-type instructions that should be independent of any cache changes. Turns out the instruction cache isn't behaving as espected, so we connected only the icache and connected the data cache to a golden model for debugging purposes. This lead us to easily sort out the bug and solve it.</p>
-<p>However, icache processes no write requests, so it is considerably easier. Afterward, we need to solve for dcache and write request related bugs. Turns out the data_write_enable signal should not be impacted by the stalls. Fixing it fixed all the asm bugs, which means our cache works in some small programs for now.</p>
-<h2 id="debugging-cache">Debugging Cache</h2>
-<p>The benchmark test, which are larger tests specifically for testing cache accuracy and performance, took considerably longer to run (probably hours). We were stucked here for a long time, even taking a peek at the waveform became a difficult thing. Turns out the time out cycle was set to be 5*10^n, something super large, and we ran into an infinite loop. Fixing that, we started to debug for the write back part of the cache. </p>
-<p>Writing back is definitely the trickiest bug of the entire project. We primarily worked on a program in which 'Go Bears!' are capitialized into 'GO BEARS!'. This is actually quite fun because the waveform tool can transform series of bits into ASCII characters, and you can see all kinds of nonsenses being produced XD. </p>
-<p>Turns out the bug is, our Cache FSM is lacking a stage of reading the right thing from the cache before writing things back. This is why you can see things like GOAB popping around our waveforms. Fixing this, and some other minor bugs in other bmark tests, gave us the desired results of passing all the bmark tests. </p>
-<h2 id="todos">TODOs</h2>
-<p>I am satisfied with what we did in this project. However, our synthesis, as the final step, was unsuccessful. Despite solving all the latches and other bugs showing up in the log, we couldn't get the synthesized design to pass tests. This is quite disappointing. If given more time, we are confident that we can get the desing working in the synthesis stage. But all in all, I've surely learnt a lot from this project. </p>
+<h1 id="drydock-local-fpga-co-simulation-setup-doc">Drydock Local-FPGA Co-Simulation Setup Doc</h1>
+<h2 id="before-you-start">Before you start</h2>
+<p>Firesim needs a Vitis U250 FPGA to work. Luckily there are some at the firesim1 millennium machine at berkely. You can ssh into it using: 
+<code>ssh my_username@firesim1.millennium.berkeley.edu</code></p>
+<p>However, the FPGAs at this machine is shared resources. There are 2 FPGAs plugged there. There might be other people running other stuffs on other FPGAs, so there needs to be an assignment of FPGAs. Please talk to <strong>Abe</strong> in SLICE lab; the FPGA we are assigned should be in slot 1, and slot 2 is used by other users. (slot0 and slot3 should be unplugged now).</p>
+<h2 id="setting-up-firesim">Setting Up Firesim</h2>
+<p>This section is adapted from the <a href="https://docs.fires.im/en/stable/Advanced-Usage/Vitis.html#setup">Firesim Documentation</a>. Shoutout to the firesim team for the great releases and Abe for helping me setting it up.</p>
+<p>First thing first, make a new directory in scratch.</p>
+<div class="highlight"><pre><span></span><code>cd /scratch
+mkdir [username]
+cd [username]
+</code></pre></div>
+<p>make sure you have installed Vitis/Vivado and XRT. They should be installed already on the millennium machine. However, you need to source them properly to access these software. Copy this example bashrc (written by Abe originally) to source everything you need. <strong>Make sure you substitue all [username] with your actual username!</strong></p>
+<div class="highlight"><pre><span></span><code># example .bashrc
+
+# Quick way to get home
+export SCRATCH_HOME=/scratch/[username]
+
+####################################
+# SERVER Specific Configuration
+####################################
+
+export LD_LIBRARY_PATH=$SCRATCH_HOME/local-lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+# Quickly call the vlsi script for the tools
+source /ecad/tools/vlsi.bashrc
+export VCS_LIC_EXPIRE_WARNING=0
+
+# Set SBT to cache locally
+# Used in Chipyard SBT invocation and $SCRATCH_HOME/bin
+export CACHE_OPTS=&quot;-Dsbt.ivy.home=$SCRATCH_HOME/.ivy2 -Dsbt.global.base=$SCRATCH_HOME/.sbt -Dsbt.boot.directory=$SCRATCH_HOME/.sbt/boot/&quot;
+export JVM_OPTS=&quot;-Xmx8G -Xss8M -Djava.io.tmpdir=$SCRATCH_HOME/.java_tmp&quot;
+
+# support newer chipyard
+export JAVA_OPTS=&quot;$JVM_OPTS&quot;
+export SBT_OPTS=&quot;$CACHE_OPTS&quot;
+
+export COURSIER_CACHE=$SCRATCH_HOME/.coursier-cache
+
+# only source on firesim1
+if [ $(uname -n) == &quot;firesim1&quot; ]; then
+    # Get Vitis (and Vivado) 2020.2
+    source /ecad/tools/xilinx/Vitis/2021.1/settings64.sh &gt; /dev/null
+
+    # Get XRT
+    source /opt/xilinx/xrt/setup.sh &gt; /dev/null
+fi
+</code></pre></div>
+<p>Great! Now let's clone firesim and set it up. </p>
+<p>Run the following commands:</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/firesim/firesim
+
+cd firesim
+
+git checkout 1.15.1
+</code></pre></div>
+<p>This next step should require sudo access when initializing conda, so might fail? Please run it, and check if conda is initialized.</p>
+<div class="highlight"><pre><span></span><code>./scripts/machine-launch-script.sh
+
+conda --version
+&gt;&gt;&gt; conda 4.12.0
+</code></pre></div>
+<p><em>(If conda is not initialized properly, please reach out to me. I will double check.)</em></p>
+<p>Anyways, if things goes as expected, the next step is to setup the rest of the firesim repo. </p>
+<div class="highlight"><pre><span></span><code>// unofficial step
+pip install conda-lock
+
+./build-setup.sh
+&gt;&gt;&gt; ... Setup complete! ...
+
+source sourceme-f1-manager.sh
+
+firesim managerinit --platform vitis
+</code></pre></div>
+<p>Great! At this point, your firesim repo is already setup, and you're ready to go!</p>
+<h2 id="test-building-a-simulation">Test Building a Simulation</h2>
+<p>Let's test if firesim works as expected, by building a very small rocket core and verify it simulates correctly. Now, before you start, notice that we need to source a bunch of scripts. For our purpose, it should be:</p>
+<div class="highlight"><pre><span></span><code>    source env.sh
+    source sourceme-f1-manager.sh
+</code></pre></div>
+<p>You may want to add this into your <code>~/.bashrc</code> to avoid doing it everytime. </p>
+<p>Now let's <strong>add</strong> the following build recipe to your <code>deploy/config_build_recipes.yaml</code> file. This is where you will specify the bitstream you want to generate from. </p>
+<div class="highlight"><pre><span></span><code>firesim_rocket_singlecore_no_nic:
+    DESIGN: FireSim
+    TARGET_CONFIG: FireSimRocketConfig
+    PLATFORM_CONFIG: BaseVitisConfig
+    deploy_triplet: null
+    post_build_hook: null
+    metasim_customruntimeconfig: null
+    bit_builder_recipe: bit-builder-recipes/vitis.yaml
+</code></pre></div>
+<p><strong>Importantly</strong>, notice that you need to configure the platform and bit builder recipe to <strong>vitis</strong> instead of <strong>f1</strong>. </p>
+<p>Now, let's create a building directory in your scratch directory, where firesim will dump the bitstreams it has built there.</p>
+<div class="highlight"><pre><span></span><code>cd /scratch/[username]
+mkdir firesim_build_temp
+</code></pre></div>
+<p>We can now modify config_build.yaml, which is the configuration file firesim will refer to when running <code>firesim buildbitstream</code>. Leaving other parts intact, we should add: </p>
+<div class="highlight"><pre><span></span><code>...
+build_farm:
+    // make sure it says &quot;externally provisioned&quot;
+    base_recipe: build-farm-recipes/externally_provisioned.yaml
+    recipe_arg_overrides:
+        // This is the line you should touch!
+        default_build_dir: /scratch/[username]/firesim_build_temp
+...
+
+builds_to_run:
+    //delete all other stuffs in this section and add
+    - firesim_rocket_singlecore_no_nic
+</code></pre></div>
+<p>Now, we're ready to build a bitstream. Since it will probably take hours, let's create a screen session (or tmux) for it.</p>
+<div class="highlight"><pre><span></span><code>screen -S build
+
+source env.sh
+source sourceme-f1-manager.sh
+
+firesim buildbitstream
+</code></pre></div>
+<p>Take a nap or drink some tea... See you in a few hours.</p>
 
 
 
@@ -729,27 +732,6 @@
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="../../Musci27/Week4/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Week4" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Week4
-            </div>
-          </div>
-        </a>
-      
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
