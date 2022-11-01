@@ -498,6 +498,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#test-running-a-simulation" class="md-nav__link">
+    Test running a simulation
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -647,6 +654,51 @@ source sourceme-f1-manager.sh
 firesim buildbitstream
 </code></pre></div>
 <p>Take a nap or drink some tea... See you in a few hours.</p>
+<h2 id="test-running-a-simulation">Test running a simulation</h2>
+<p>If things goes as expected, you should see the following message:</p>
+<div class="highlight"><pre><span></span><code>Your bitstream has been created!
+Add
+
+firesim_rocket_singlecore_no_nic:
+    xclbin: /scratch/iansseijelly/new_firesim_build_temp/platforms/vitis/cl_FireSim-FireSimRocketConfig-BaseVitisConfig/bitstream/build_dir.xilinx_u250_gen3x16_xdma_3_1_202020_1/firesim.xclbin
+    deploy_triplet_override: FireSim-FireSimRocketConfig-BaseVitisConfig
+    custom_runtime_config: null
+
+to your config_hwdb.ini to use this hardware configuration.
+</code></pre></div>
+<p>Let's add this to <code>config_hwdb.yml</code> as prompted. We can now finally run a simulation! Let's now configure the <code>config_runtime_yml</code>. First, modify the <code>run_farm</code> configuration to look like the following.</p>
+<div class="highlight"><pre><span></span><code>run_farm:
+base_recipe: run-farm-recipes/externally_provisioned.yaml
+recipe_arg_overrides:
+    default_platform: VitisInstanceDeployManager
+    default_simulation_dir: /scratch/iansseijelly/new_firesim_run_temp
+    run_farm_hosts_to_use:
+        - localhost: one_fpga_spec
+    run_farm_host_specs:
+        - one_fpga_spec:
+            num_fpgas: 1
+            num_metasims: 0
+            use_for_switch_only: false
+</code></pre></div>
+<p>Next, modify the <code>target_config</code> part to look like this:</p>
+<div class="highlight"><pre><span></span><code>target_config:
+    topology: example_8config
+    no_net_num_nodes: 1
+    link_latency: 6405
+    switching_latency: 10
+    net_bandwidth: 200
+    profile_interval: -1
+
+    default_hw_config: firesim_rocket_singlecore_no_nic
+
+    plusarg_passthrough: &quot;&quot;
+</code></pre></div>
+<p>Let's also build a linux image for our use. Run the following commands to creat a br-base linux image we will use on the simulation.</p>
+<div class="highlight"><pre><span></span><code>cd sw/firesim-software
+./init-submodules.sh
+./marshal -v build br-base.json
+</code></pre></div>
+<p>Let's launch a simulation now! In the firesim directory, run <code>firesim infrasetup</code>, then <code>firesim runworkload</code>.</p>
 
 
 
