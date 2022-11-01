@@ -4,19 +4,13 @@ nav:
     - Introduction: index.md
     - Notes: 
       - Data 100 Revision: Data100/Data100_review.md
-      - CS 170 Notes: 
-        - Lecture 1: CS170/Lec1.md
-      - EE 140 Notes: 
-        - Lecture 1: EE140/Lec1.md
-      - EE 120 Notes:
-        - Lecture 1: EE120/Lec1.md
       - Music 27 Notes:
         - Week2: Musci27/Week2.md
         - Week3: Musci27/Week3.md
         - Week4: Musci27/Week4.md
     - Projects:
       - 151 Verilog CPU: Projects/151_CPU.md
-      - Drydock LocalFPGA doc: Projects/LocalFiresim.md
+      - LocalFPGA doc: Projects/LocalFiresim.md
 
 theme:
   name: material

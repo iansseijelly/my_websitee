@@ -1,4 +1,7 @@
-# Drydock Local-FPGA Co-Simulation Setup Doc
+# Dxxxxxk Local-FPGA Co-Simulation Setup Doc
+
+Apparently there'a clock jitter and your title is corrupted. This is nothing official and for internal references only. Ignore this page if it somehow pops up to you unintentionally.
+
 
 ## Before you start
 
@@ -139,3 +142,54 @@ Now, we're ready to build a bitstream. Since it will probably take hours, let's 
     firesim buildbitstream
 
 Take a nap or drink some tea... See you in a few hours.
+
+## Test running a simulation
+
+If things goes as expected, you should see the following message:
+
+    Your bitstream has been created!
+    Add
+
+    firesim_rocket_singlecore_no_nic:
+        xclbin: /scratch/iansseijelly/new_firesim_build_temp/platforms/vitis/cl_FireSim-FireSimRocketConfig-BaseVitisConfig/bitstream/build_dir.xilinx_u250_gen3x16_xdma_3_1_202020_1/firesim.xclbin
+        deploy_triplet_override: FireSim-FireSimRocketConfig-BaseVitisConfig
+        custom_runtime_config: null
+
+    to your config_hwdb.ini to use this hardware configuration.
+
+Let's add this to `config_hwdb.yml` as prompted. We can now finally run a simulation! Let's now configure the `config_runtime_yml`. First, modify the `run_farm` configuration to look like the following.
+
+    run_farm:
+    base_recipe: run-farm-recipes/externally_provisioned.yaml
+    recipe_arg_overrides:
+        default_platform: VitisInstanceDeployManager
+        default_simulation_dir: /scratch/iansseijelly/new_firesim_run_temp
+        run_farm_hosts_to_use:
+            - localhost: one_fpga_spec
+        run_farm_host_specs:
+            - one_fpga_spec:
+                num_fpgas: 1
+                num_metasims: 0
+                use_for_switch_only: false
+
+Next, modify the `target_config` part to look like this:
+
+    target_config:
+        topology: example_8config
+        no_net_num_nodes: 1
+        link_latency: 6405
+        switching_latency: 10
+        net_bandwidth: 200
+        profile_interval: -1
+
+        default_hw_config: firesim_rocket_singlecore_no_nic
+
+        plusarg_passthrough: ""
+
+Let's also build a linux image for our use. Run the following commands to creat a br-base linux image we will use on the simulation.
+
+    cd sw/firesim-software
+    ./init-submodules.sh
+    ./marshal -v build br-base.json
+
+Let's launch a simulation now! In the firesim directory, run `firesim infrasetup`, then `firesim runworkload`.
