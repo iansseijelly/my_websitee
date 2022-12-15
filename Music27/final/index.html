@@ -13,7 +13,7 @@
     
     
       
-        <title>Asymptotics - Luxz Website</title>
+        <title>Music 27 Final Revision - Luxz Website</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#asymptotics" class="md-skip">
+        <a href="#music-27-final-revision" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Asymptotics
+              Music 27 Final Revision
             
           </span>
         </div>
@@ -203,15 +203,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../../CS170/Asymptotics/" class="md-tabs__link">
         CS 170 Notes
       </a>
     </li>
@@ -227,7 +225,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../Music27/Q1/" class="md-tabs__link">
+      <a href="../Q1/" class="md-tabs__link">
         Music 27
       </a>
     </li>
@@ -320,14 +318,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
@@ -348,79 +344,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Asymptotics
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../CS170/Asymptotics/" class="md-nav__link">
         Asymptotics
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#algorithm" class="md-nav__link">
-    Algorithm
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integer-arithmetic" class="md-nav__link">
-    Integer Arithmetic
-  </a>
-  
-    <nav class="md-nav" aria-label="Integer Arithmetic">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#addition-problem" class="md-nav__link">
-    Addition Problem
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#multiplication-problem" class="md-nav__link">
-    Multiplication Problem
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -432,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../FFT/" class="md-nav__link">
+      <a href="../../CS170/FFT/" class="md-nav__link">
         FFT
       </a>
     </li>
@@ -446,7 +374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Graphs/" class="md-nav__link">
+      <a href="../../CS170/Graphs/" class="md-nav__link">
         Graphs
       </a>
     </li>
@@ -460,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Greedy/" class="md-nav__link">
+      <a href="../../CS170/Greedy/" class="md-nav__link">
         Greedy
       </a>
     </li>
@@ -474,7 +402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DP/" class="md-nav__link">
+      <a href="../../CS170/DP/" class="md-nav__link">
         DP
       </a>
     </li>
@@ -522,7 +450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Music27/Q1/" class="md-nav__link">
+      <a href="../Q1/" class="md-nav__link">
         Quiz1
       </a>
     </li>
@@ -536,7 +464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Music27/Q2/" class="md-nav__link">
+      <a href="../Q2/" class="md-nav__link">
         Quiz2
       </a>
     </li>
@@ -612,140 +540,84 @@
                 
 
 
-<h1 id="asymptotics">Asymptotics</h1>
-<h2 id="algorithm">Algorithm</h2>
-<p>Well-defined procedure for carrying out some computational task.
-We want: <strong>Correct</strong> (Always halts + returns correct answer) &amp; <strong>Efficient</strong> (Minimized consumption of computational resources like time, memory, etc.)</p>
-<h2 id="integer-arithmetic">Integer Arithmetic</h2>
-<p>How is input represented?
-Indian-Arabic numeral system, representing numbers as sequence of digits in base 10</p>
-<h3 id="addition-problem">Addition Problem</h3>
-<p>Given x,y in base 10, return x + y in base 10</p>
-<p><strong>Algorithm 1:</strong> repeated increments, start with x, and increment y times. Efficiency: increment takes less than or equal to n steps, and with y increments, =&gt; total number of stemps is less than or equal to <script type="math/tex; mode=display">10^{n} \cdot n</script>, and can be simplified to 10^n steps considering carrying.</p>
-<p><strong>Algorithm 2:</strong> adding up using a lookup table for each digit, with an efficiency of <script type="math/tex; mode=display">O(n)</script>
-</p>
-<p>Cannot be better than Algorithm 2: Writing the answer down (n+1 digits) takes n steps, &amp;&amp; Need to read at least all the input digits, exists inputs says the same answer for both.</p>
-<h3 id="multiplication-problem">Multiplication Problem</h3>
-<p>Given x,y in base 10, return x times y in base 10</p>
-<p><strong>Algorithm 1:</strong> repeated additions, start with 0, add x over and over for y times. Efficiency: <script type="math/tex; mode=display"> \underset {(n)} {num_{steps}} \cdot \underset {(y)} {num_{add}} = O(n \cdot10^n )</script>
-</p>
-<p><strong>Algorithm 2:</strong> grade school algorithm. Efficiency: <script type="math/tex; mode=display">O(n^2)</script>
-</p>
-<p><strong>Algorithm3:</strong> Divide and Conquer (Recursion)
-<script type="math/tex; mode=display">x = x_h \cdot 10^{\frac{n}{2}} + x_l</script>
-<script type="math/tex; mode=display">y = y_h \cdot 10^{\frac{n}{2}} + y_l</script>
-<script type="math/tex; mode=display">x \cdot y = x_h \cdot y_h \cdot 10^{\frac{n}{2}} + (x_h \cdot yl + x_l \cdot y_h) \cdot 10^{\frac{n}{2}}+ y_l \cdot x_l</script>
-Recurstion relation: <script type="math/tex; mode=display">T(n) \leq 4*T(\frac{n}{2}) + C\cdot n</script> if n &gt;1, and  <script type="math/tex; mode=display">T(n) \leq C</script> if n = 1, where C is an additional addition effort constant.</p>
-<p><strong>Analysis</strong>: <script type="math/tex; mode=display">Total steps \leq C \cdot n \cdot(1 + 2 + ... + 2^k)</script>, where k = the height of the tree, logn, so the efficiency is ¥$O(n^2)$$</p>
-<p><strong>Algorithm 4:</strong> Karatruba's Algorithm
-<script type="math/tex; mode=display">x \cdot y = \underset{A}{x_h \cdot y_h} \cdot 10^{\frac{n}{2}} + \underset{C}{(x_h \cdot yl + x_l \cdot y_h)} \cdot 10^{\frac{n}{2}}+ \underset{B}{y_l \cdot x_l}</script>
-</p>
-<p><strong>Analysis</strong>: Reduced 4 recursive calls into only 3. <script type="math/tex; mode=display">Total steps \leq C \cdot n \cdot(1 + \frac{3}{2} + ... + \frac{3}{2}^k)</script>, where k = the height of the tree, logn, so <script type="math/tex; mode=display">< 3C \cdot 3^{log_2n}</script>
-<script type="math/tex; mode=display"> \lt O(n^{log_{2}3})</script>
-</p>
-<h1 id="cs170-lecture-2">CS170 Lecture 2</h1>
-<h2 id="fibonacci-numbers">Fibonacci Numbers</h2>
-<h3 id="algorithm-1-recursion">Algorithm 1: Recursion</h3>
-<div class="highlight"><pre><span></span><code> def fib(n):
-    if n &lt;= 1:
-        return n
-    else: 
-        return fib(n-1) + fib(n-2)
-</code></pre></div>
-<p><strong>flops</strong> : calculate the # of "flops" -&gt; the number of operation</p>
-<p><strong>runtime</strong>: n * exp(n)</p>
-<p>In this model, there is a lot of redundant work. T(n) = 0 if n &lt;= 1, else </p>
-<p>
-<script type="math/tex; mode=display">T(n) = T(n-1) + T(n-2) + 1</script>
-</p>
-<p>can prove T(n) == F(n+1) - 1, which is groing exponentially, making this algorithm very slow</p>
-<h3 id="algorithm-2-for-loop">Algorithm 2: For Loop</h3>
-<div class="highlight"><pre><span></span><code>def fib(n):
-    if n &lt;= 1:
-        return n
-    else:
-        a = 0
-        b = 1
-        for i in range (1, n-1):
-            tmp = a + b
-            a = b
-            b = tmp
-        return b
-</code></pre></div>
-<p><strong>flops</strong>: This is basically dynamic programming, taking n-1 flops.</p>
-<p><strong>runtime</strong>: n^2</p>
-<h3 id="algorithm-3-fast-matrix-powering">Algorithm 3: Fast Matrix Powering</h3>
-<p>
-<script type="math/tex; mode=display">A = \begin{bmatrix}
-1 & 1\\
-1 & 0
-\end{bmatrix}</script>
-</p>
-<p>
-<script type="math/tex; mode=display">A \times \begin{bmatrix}
-F_1\\
-F_0
-\end{bmatrix} = \begin{bmatrix}
-F_1+F_0\\
-F_1
-\end{bmatrix} = \begin{bmatrix}
-F_2\\
-F_1
-\end{bmatrix}</script>
-</p>
-<p>Need to multiply A for n times, then multiply the base case.</p>
-<p>By using the fast exponentiation algorithm, can reduce this to <strong>logn</strong> flops.</p>
-<p><strong>runtime</strong>: n^2 * logn
-if we use the smart fast exponentiation, then n^2
-if use a faster multiplication algorithm like karatsuba, can reduce it to n^1.5ish</p>
-<h3 id="algorithm-4-closed-form-formula">Algorithm 4: Closed Form Formula</h3>
-<p>Diagonalize A as </p>
-<p>
-<script type="math/tex; mode=display">A = Q \Lambda Q^T</script>
-</p>
-<p>
-<script type="math/tex; mode=display">A^n = Q \Lambda Q^T \times Q \Lambda Q^T ... \times Q \Lambda Q^T</script>
-</p>
-<p>
-<script type="math/tex; mode=display">\therefore A^n = Q \Lambda^n Q^T</script>
-</p>
-<p>
-<script type="math/tex; mode=display">\therefore F_n = \frac{1}{\sqrt{5}} \times [(\frac{1 + \sqrt{5}}{2}) ^ n - (\frac{1 - \sqrt{5}}{2}) ^ n]</script>
-</p>
-<p>flops: <strong>logn</strong> as well</p>
-<h2 id="asymptotic-notation">Asymptotic Notation</h2>
-<p>A way to compare the order of growth of functions.</p>
+<h1 id="music-27-final-revision">Music 27 Final Revision</h1>
+<h2 id="getting-along-in-the-patriarchy">Getting along in the Patriarchy</h2>
 <ul>
-<li>Big-O: less than or equal to </li>
-<li>Little-0: strictly less than</li>
-<li>Big-Omega: greater than or equal to </li>
-<li>Little-Omega: strictly greater than</li>
-<li>Theta: equal</li>
+<li><strong>Opera Buffa</strong>: opera seria, employs two elements in alternation: recitatives for the dialogue and the action, and numbers that are fully musical—almost always arias—for static meditation and “tableaus” of emotional expression. Classical opera buffa works with the same elements, except that the fully musical numbers include ensembles as well as solo arias.</li>
+<li><strong>Ensembles</strong> vs arias: ensemble is sang by two or more people, while aria is sang solo</li>
+<li><strong>enlightenment：</strong> To describe Joseph II as an “enlightened” ruler is both to commend him and also to locate him in European intellectual history.</li>
+<li>Lorenzo da Ponte: </li>
 </ul>
-<p>
-<script type="math/tex; mode=display">Ffn) = O(g(n))</script>
-<script type="math/tex; mode=display">\implies \exists \ c> 0 \ s.t. \forall \ n \ f(n) \le c \times g(n)</script>
-</p>
-<hr />
-<p>
-<script type="math/tex; mode=display">f(n) = o(g(n))</script>
-<script type="math/tex; mode=display">\implies \lim_{n\to\inf}\frac{f(n)}{g(n)} = 0</script>
-</p>
-<hr />
-<p>
-<script type="math/tex; mode=display">f(n) = \Omega(g(n))</script>
-<script type="math/tex; mode=display">\implies g(n) = O(f(n))</script>
-</p>
-<hr />
-<p>
-<script type="math/tex; mode=display">f(n) = \omega(g(n))</script>
-<script type="math/tex; mode=display">\implies g(n) = o(f(n))</script>
-</p>
-<hr />
-<p>
-<script type="math/tex; mode=display">f(n) = \theta(g(n))</script>
-<script type="math/tex; mode=display">\implies g(n) = O(f(n)) \ \& \  f(n) = \Omega(g(n))</script>
-</p>
+<h2 id="into-the-beyond-romanticism">Into the Beyond - Romanticism</h2>
+<ul>
+<li><strong>musical autonomy:</strong> that music is a thing that is just about itsel</li>
+<li><strong>Symphony</strong>: a large, impressive concert piece for orchestra</li>
+<li><strong>Scherzo</strong>: a fast, rushing movement in triple meter—inherited from the minuet—and in the basic minuet-and-trio form, A B A.</li>
+<li><strong>Minuet</strong>: A stately dance in triple meter, with grace and ease.</li>
+<li>the <strong>sublime</strong>: the majesty and mystery of nature, its boundlessness, even its menace. </li>
+<li><strong>Romanticism</strong>: Striving for a better, higher, ideal state of being was at the heart of the Romantic movement (this is the <strong>cult of individual feeling</strong>), inevitably cast in the role of rebels against the established order</li>
+<li>The ideology of genius: No longer a mere craftsman, the artist suffers and creates</li>
+<li><strong>Rhythmic drive</strong>: Immediately apparent is the drive and blunt power of the symphony’s rhythmic style. Beethoven hammers the meter, piles accent upon accent, and calculates long time spans with special power: a far cry from the elegance and wit of the Classical style.</li>
+<li><strong>Motivic consistency.</strong> During the first movement a single motive is heard constantly, in many different forms. They are not random forms; the motive becomes more and more vivid and significant as the work proceeds. People have marveled at the “organic” quality of such music, which seems to grow like a plant’s leaves and branches out of a simple seed.</li>
+<li><strong>Psychological progression</strong>. Over the course of the Fifth Symphony’s four movements, Beethoven seems to trace a coherent and dramatic psychological progression in several stages. “There Fate knocks at the door!” he is supposed to have said about the first movement—but after two eventful middle stages, Fate is nullified in the last movement, trampled under by a military march.</li>
+<li><strong>Motive</strong>: a leading phrase or figure that is reproduced and varied through the course of a composition or movement.</li>
+<li><strong>fermata</strong>: indicates an indefinite hold of the note it goes over, allowing for some improvisation. </li>
+<li><strong>teleology</strong>: the explanation of phenomena in terms of the purpose they serve rather than of the cause by which they arise.</li>
+<li>
+<p>In the <strong>third period</strong> (from around 1818 to 1827) Beethoven’s music loses much of its earlier tone of heroism.</p>
+</li>
+<li>
+<p><strong>Program music</strong> refers to instrumental music written in association with a poem, a story, or some other literary source</p>
+</li>
+<li>idée fixe: medicalterm for “fixed idea” or obsession</li>
+<li><strong>thematic transformation</strong>: musical technique where the theme is transformed in several unpredictable contexts </li>
+<li>serpent/E-flat clarinet/tubular bells: some instrumentation experiments</li>
+<li><strong>glissando</strong>: sliding across intervals</li>
+<li><strong>pizzicato</strong>: plucking instead of bowing strings</li>
+<li><strong>col legno</strong>: “on the wood”, the back of the bow</li>
+</ul>
+<h2 id="violence-in-late-romanticism">Violence in Late Romanticism</h2>
+<ul>
+<li><strong>music drama</strong>, a special word Wagner reserves, shares the honors with poetry, drama, and philosophy—all furnished by Wagner himself—as well as the stage design and acting. </li>
+<li>Wagner coined the word <strong>Gesamtkunstwerk</strong>, meaning “total work of art,” for this powerful concept. He always insisted on the distinction between music drama and ordinary “opera.”</li>
+<li><strong>Letimotivs</strong>: a recurrent theme, associated with a particular person, idea, or situation. And since, for the Romantics, music was the undisputed language of emotion, leitmotivs—being music—could state or suggest ideas in <strong>emotional</strong> terms, over and above the intellectual terms provided by mere words. This was Wagner’s theory, a logical outcome of Romantic doctrine about music. Furthermore, the complex web of leitmotivs provided his long music dramas with the <strong>thematic unity</strong> that composers sought. On both counts, psychological and technical, leitmotivs were guaranteed to impress audiences of the nineteenth century.</li>
+<li><strong>Tristan Chord</strong>: signifier of unquenchable DESIRE</li>
+<li>
+<p>Transcendence: If everyday life seemed dull and meaningless, it could be transcended through the free exercise of individual will and passion.</p>
+</li>
+<li>
+<p><strong>diva</strong>: a famous female opera singer.</p>
+</li>
+<li>recitative: </li>
+<li>realism: use of “low” subjects (blood, violence, money), a search for authenticity ethnography/orientalism/primitivism/phonography. It might be a “lack of music: shouting, yelling, speaking, vocal extremes, “non-music” SOUND</li>
+<li>descending-scale melody heard 3 times 
+1) far away “on the horizon” (voice with solo violin and harp)
+2) at our meeting (voice with full strings doubling)
+3) inside my head: “I wait” (full orchestra with brass doubling)</li>
+<li>A <strong>pentatonic scale</strong> is a musical scale with five notes per octave, used in oriental musics</li>
+</ul>
+<h2 id="appropriation-and-modernism">Appropriation and Modernism</h2>
+<ul>
+<li><strong>symphonic poem</strong>: A symphonic poem is a one-movement orchestral composition with a program, in a free musical form. </li>
+<li><strong>nocturne</strong> = “night piece”,“creating an atmosphere”</li>
+<li>non-functional harmony: when harmony stop gluging</li>
+<li>The <strong>sonority</strong> of an instrument or voice is the colour, character or quality of sound it produces.</li>
+<li><strong>cakewalk</strong>, a ragtime dance of the 1890s. </li>
+<li><strong>Gamelan</strong> is the traditional ensemble music of the Javanese, Sundanese, and Balinese peoples of Indonesia, made up predominantly of percussive instrument</li>
+<li><strong>“gong”</strong> = the largest gamelan instrument</li>
+<li>ostinato: </li>
+<li>
+<p><strong>stratified polyphony</strong>: with rhythmic layers ranging from the gongan itself all the way down to subdivisions of individual beats. Each instrument or instrumental group plays a single role, occupying one of these rhythmic strata</p>
+</li>
+<li>
+<p><strong>modernism</strong>: something self-conscious, avant-gard</p>
+</li>
+<li>Ballets Russes: Parisian modernist ballet company</li>
+<li><strong>Primitivism</strong>: dea that civilization is a mistake, that children, “peasants,” “folk,” “natural savages,” instincts and straight-talk are more honest, real, and authentic.</li>
+<li><strong>anti-expressive music</strong>: I consider that music is, by its very nature, essentially powerless to expressanything at all, whether a feeling, an attitude of mind, a psychological mood.... Expression has never been an inherent property of music. </li>
+<li><strong>Biologism</strong>: hardcore anti-humanist idea that life is about physical facts only: childbirth, survival, procreation, supremacy, conflict, killing, death. NO MORE</li>
+<li><strong>vamp</strong>: A repeated chord progression or rhythmic figure leading either into or out of a tune or composition.</li>
+</ul>
 
               
             </article>
@@ -761,42 +633,6 @@ if use a faster multiplication algorithm like karatsuba, can reduce it to n^1.5i
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="../../Data100/Data100_review/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data 100 Revision" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Data 100 Revision
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../FFT/" class="md-footer__link md-footer__link--next" aria-label="Next: FFT" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              FFT
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
